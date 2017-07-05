@@ -1,0 +1,18 @@
+{
+    "name": "Ravinder Nehra",
+    "title": "Ravinder Nehra",
+    "version": "1.0.0",
+    "homepage": "https://rnehra01.github.io.com",
+    "author": "Ravinder Nehra",
+    "devDependencies": {
+        "grunt": "~0.4.5",
+        "grunt-contrib-less": "~0.11.4",
+        "grunt-contrib-watch": "~0.6.1",
+        "grunt-banner": "~0.2.3",
+        "grunt-contrib-uglify": "~0.5.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rnehra01/rnehra01.github.io.git"
+    }
+}
