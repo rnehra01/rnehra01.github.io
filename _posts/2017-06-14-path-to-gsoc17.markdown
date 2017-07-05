@@ -1,0 +1,54 @@
+---
+layout:     post
+comments:   true
+title:      "$PATH to GSoC'17"
+subtitle:   "My journey from hearing about GSoC to getting selected."
+date:       2017-06-14 12:00:00
+author:     "Ravinder Nehra"
+header-img: "/assets/img/honeynet-gsoc.jpg"
+post-preview-img: "/assets/img/gsoc.png"
+permalink:  /blog/:title
+identifier: "path-to-gsoc17"
+---
+
+<p>
+It started almost a year back when I heard about GSoC for the first time in an introductory lecture by SDSLabs. I was quite
+a noob except knowing a little about competitive coding. Then came the day when Google announced the mentoring organisations and I remember going through every single organistion but I couldn't understand WHAT and WHERE to do. I tried sorting organisations according to programming language but nope, nothing :( I don't even know about a commit.   
+</p>
+<p>
+Though I had realised one thing that it's not about language but it's about field, I should have a background in any of these fields. I've tried Web and Android Development but neither fascinates me much. The deadline is one week away and then I met one of my classmate, <a href="https://paraschetal.in"><b>Paras</b></a> who was trying for GSoC and honestly I still didn't have a clue. After the end of semester exams, I took him to my room and asked <i>What the heck is all this?</i> He told me about his project and introduced me to Information Security. Well, Infosec is cool after all who doesn't want to be a hacker, right? I spent my summer learning more about infosec, git and basic web backend to step into web exploitation. I made a <a href="https://github.com/rnehra01/Tic-Tac-Toe">Tic-Tack-Toe</a> game using javascript and put it on my GitHub. The next semester was all about Infosec.
+</p>
+<p>
+Meanwhile, I started searching for open-source organisation to contribute in 2016 GSoC orgnisation list. Due to my interest in web security, I found <a href="github.com/zaproxy">OWASP ZAP</a> a suitable candidate. But it's code base is humongous. It took me almost half month till I found a <a href="https://github.com/zaproxy/zap-extensions/pull/706/files?diff=split#diff-0553f2ca6daf4d735deffd0ab535a2afL60">TODO</a>, which is doable. It is just an extension of an attack whose code is already present in the same file. With this small patch, I submitted my first <a href="https://github.com/zaproxy/zap-extensions/pull/706">PR</a>, Wooohhhuuu !!!   
+</p>
+<p>
+Later I submitted an issue and another PR in January. Now odds are pretty good for me. Google was going to announce mentoring organisations on <i>27th Feb, 9:30 pm</i> IST. At <i>9:31 pm</i>, I got a message from Paras <i>"We're screwed, man. OWASP isn't selected"</i>.
+I knew the same thing had happened with one my senior but I still played the gamble and it didn't work. So I had to start from sea level.<br>
+I finalized <a href="https://www.honeynet.org/gsoc/ideas#snare-tanner">Snare/Tanner</a> and <a href="https://www.honeynet.org/gsoc/ideas#mitmproxy-core">Mitmproxy</a> after searching for almost one week. The code base of Mitmproxy is large and I'm not much familiar with networks, it might take a lot of time to just understand and I wouldn't be able to contribute much, so I put it on hold, though it's my first choice.
+</p>
+<p>
+Snare/Tanner is a web security based project and also a new one, thus has a small code base. So I went for this one, contacted the mentor and started contributing by fixing bugs and writing missing tests.
+</p>
+<div class="card z-depth-4">
+    <div class="card-image">
+        <img src="/assets/img/gsoc17_before_pr.png" style="width:100%;">
+    </div>
+</div>
+<center style="font-size: 1.4rem"><i>My Contributions before submitting final proposal</i></center>
+<p>
+The deadline for proposal submission is 2 weeks away, so I have to worry about proposal. I took some ideas from the <i>Ideas page</i> and a few my own to make a good list of tasks. Then I looked at my seniors' proposals, used them as template and organize tasks with timeline. I got it reviewed from <a href="https://twitter.com/jay_f0xtr0t">Jay Bosamiya</a> and my mentor. I submitted the <a href="/assets/pdf/HoneynetGSoCproposal.pdf">final version</a> 2 days before.
+</p>
+<p>
+The list of accepted student projects for Google Summer of Code ‘17 came on <i>4th May, 9:30 pm</i> IST. I opened the website at <i>9:30 pm</i> precisely and this made my day, technically night.
+</p>
+<div class="card z-depth-4">
+    <div class="card-image">
+        <img src="/assets/img/gsoc17_snare_tanner.png" style="width:100%;">
+    </div>
+</div>
+<p>
+I'm looking forward to enjoy my summer with Honeynet. I'll keep writing regular reports on this blog itself.
+</p>
+<p>
+I would like to thank my mentor <a href="https://github.com/afeena"><b>Evgeniya</b></a> for helping me throughout the entire process, <a href="https://twitter.com/jay_f0xtr0t"><b>Jay bosamiya</b></a> for reviewing my proposal and folks at <a href="https://github.com/InfoSecIITR"><b>InfoSecIITR</b></a> for the entire Infosec journey, especially <a href="https://paraschetal.in"><b>Paras</b></a> for getting me started.
+</p>
