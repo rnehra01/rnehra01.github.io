@@ -2,9 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> - Articles</title>
-    <description>Personal Blog</description>
+    <description>Security Enthusiast - Developer</description>
     <link>
     </link>
+    
+      
+      <item>
+        <title>$PATH to GSoC'17</title>
+        
+          <description>&lt;p&gt;It started almost a year back when I heard about GSoC for the first time in an introductory lecture by SDSLabs. I was quite
+a noob except knowing a little about competitive coding. Then came the day when Google announced the mentoring organisations and I remember going through every single organistion but I couldn’t understand WHAT and WHERE to do. I tried sorting organisations according to programming language but nope, nothing :( I don’t even know about a commit.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 14 Jun 2017 12:00:00 +0000</pubDate>
+        <link>
+        /path-to-gsoc17</link>
+        <guid isPermaLink="true">/path-to-gsoc17</guid>
+      </item>
+      
     
   </channel>
 </rss>
