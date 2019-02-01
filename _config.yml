@@ -74,7 +74,7 @@ branch: source
 relative_source: ../rnehra01.github.io/
 destination: ./_site/
 production_url:  https://rnehra01.github.io/
-source_url:  https://github.com/rnehra01.github.io/
+source_url:  https://github.com/rnehra01/rnehra01.github.io/
 
 exclude:
   - assets/css
