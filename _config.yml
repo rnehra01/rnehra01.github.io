@@ -9,7 +9,7 @@ baseurl: /
 
 # Website info
 title: Ravinder Nehra
-description: Personal Blog
+description: Security Enthusiast - Developer
 cover: assets/images/blog-cover.png
 #logo: assets/images/logo.jpg
 #logo_dark: assets/images/logo.jpg
@@ -25,6 +25,8 @@ subscribers: True # you need to connect an external service for this to work,
 # by editing `_includes/subscribe-form.html`
 twitter: rnehra01 # replace by your username
 facebook: rnehra01 # replace by your username
+mail: hnehra1@gmail.com
+github: rnehra01
 
 # Disqus
 disqus: False

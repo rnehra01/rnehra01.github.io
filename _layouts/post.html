@@ -24,18 +24,18 @@ into the {body} of the default.hbs template -->
 
         <article class="post-full {{ page.subclass }} {% unless page.cover %}no-image{% endunless %}">
 
-            <header class="post-full-header">
+            <header class="post-full-header" >
                 <section class="post-full-meta">
                     <time class="post-full-meta-date" datetime="{{ page.date | date:'%e %B %Y' }}">{{ page.date | date:'%e %B %Y' }}</time>
                     {% if page.tags.size > 0 %}
                         <span class="date-divider">/</span>
                         {% for tag in page.tags %}
                             {% if forloop.index == page.tags.size %}
-                               <a href='{{ site.baseurl }}tag/{{ tag | downcase | replace: ' ', '-' }}/'>{{ tag | upcase }}</a>
+                               <a href='{{ site.baseurl }}tag/{{ tag | downcase | replace: ' ', '-' }}/'>{{ tag }}</a>
                             {% else %}
-                               <a href='{{ site.baseurl }}tag/{{ tag | downcase | replace: ' ', '-' }}/'>{{ tag | upcase }}</a>,
-                            {% endif %}
-                        {% endfor %}
+                               <a href='{{ site.baseurl }}tag/{{ tag | downcase | replace: ' ', '-' }}/'>{{ tag }}</a>,
+                            {% endif %} 
+                       {% endfor %}
                     {% endif %}
                 </section>
                 <h1 class="post-full-title">{{ page.title }}</h1>
@@ -50,16 +50,17 @@ into the {body} of the default.hbs template -->
                 <div class="kg-card-markdown">
                     {{ content }}
                 </div>
+		<hr>
             </section>
 
             <!-- Email subscribe form at the bottom of the page -->
-            {% if site.subscribers %}
-                <section class="subscribe-form">
-                    <h3 class="subscribe-form-title">Subscribe to {{ site.title }}</h3>
-                    <p>Get the latest posts delivered right to your inbox</p>
-                    {% include subscribe-form.html placeholder="youremail@example.com" %}
-                </section>
-            {% endif %}
+            <!-- {% if site.subscribers %} -->
+            <!--     <section class="subscribe-form"> -->
+            <!--         <h3 class="subscribe-form-title">Subscribe to {{ site.title }}</h3> -->
+            <!--         <p>Get the latest posts delivered right to your inbox</p> -->
+            <!--         {% include subscribe-form.html placeholder="youremail@example.com" %} -->
+            <!--     </section> -->
+            <!-- {% endif %} -->
 
             <footer class="post-full-footer">
                 <!-- Everything inside the #author tags pulls data from the author -->

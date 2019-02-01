@@ -19,7 +19,13 @@
             {% if site.twitter %}
                 <a class="social-link social-link-tw" href="https://twitter.com/{{ site.twitter }}" target="_blank" rel="noopener">{% include twitter.html %}</a>
             {% endif %}
-        </div>
+	    {% if site.github %}
+                <a class="social-link social-link-gh" href="https://github.com/{{ site.github }}" target="_blank" rel="noopener">{% include github.html %}</a>
+            {% endif %}
+            {% if site.mail %}
+                <a class="social-link social-link-mail" href="mailto:{{ site.mail }}" rel="noopener">{% include mail.html %}</a>
+            {% endif %}
+	</div>
         {% if site.subscribers %}
             <a class="subscribe-button" href="{{site.baseurl}}feed.xml">Subscribe</a>
         {% endif %}

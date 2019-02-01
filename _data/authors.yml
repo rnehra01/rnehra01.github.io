@@ -1,10 +1,12 @@
 rnehra01:
   username: rnehra01
   name: Ravinder Nehra
-  url_full: http://jekyller.github.io/jasper2/
-  url: rnehra01.github.io/jasper2
+  url_full: http://rnehra01.github.io/
+  url: rnehra01.github.io
   bio: Undergrad at IITR
-  picture: assets/images/ghost.png
+  picture: 
   facebook: rnehra01
-  twitter: rnehra01
+  twitter: rnehra02
+  github: rnehra01
+  mail: hnehra1@gmail.com
   cover: False

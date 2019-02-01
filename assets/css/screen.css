@@ -320,6 +320,15 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     stroke: #fff;
 }
 
+.social-link-gh svg path {
+    stroke: #fff;
+}
+
+.social-link-mail svg path {
+    stroke: #fff;
+    height: 2rem;
+}
+
 .social-link-rss svg {
     height: 1.9rem;
 }
@@ -425,8 +434,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     text-decoration: none;
 }
 
-.post-card-tags {
-    display: block;
+.post-card-tags-date {
     margin-bottom: 4px;
     color: var(--midgrey);
     font-size: 1.2rem;
@@ -438,6 +446,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 
 .post-card-title {
     margin-top: 0;
+    color: var(--darkgrey);
 }
 
 .post-card-content {
@@ -551,7 +560,7 @@ The first (most recent) post in the list is styled to be bigger than the others 
 
 .post-full-header {
     margin: 0 auto;
-    padding: 6vw 3vw 3vw;
+    padding: 3vw 3vw 3vw;
     max-width: 1040px;
     text-align: center;
 }
@@ -587,13 +596,14 @@ The first (most recent) post in the list is styled to be bigger than the others 
 
 .post-full-image {
     margin: 0 -10vw -165px;
-    height: 800px;
+    height: 650px;
     background: var(--lightgrey) center center;
-    background-size: cover;
+    background-size: cover;/**/
     border-radius: 5px;
+    background: color(var(--darkgrey) l(-5%)) no-repeat center center;
 }
 
-@media (max-width: 1170px) {
+@media (max-width: 100%) {
     .post-full-image {
         margin: 0 -4vw -100px;
         height: 600px;
@@ -601,7 +611,7 @@ The first (most recent) post in the list is styled to be bigger than the others 
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 100%) {
     .post-full-image {
         height: 400px;
     }
@@ -698,20 +708,35 @@ The first (most recent) post in the list is styled to be bigger than the others 
     margin: 0;
 }
 
-.post-template .kg-card-markdown > p:first-child {
-    font-size: 1.25em;
-    line-height: 1.5em;
-}
+/* .post-template .kg-card-markdown > p:first-child { */
+/*     font-size: 1.25em; */
+/*     line-height: 1.5em; */
+/* } */
 
 .post-full-content a {
-    color: #000;
-    box-shadow: var(--blue) 0 -1px 0 inset;
+    color: #3c484e;
+    box-shadow: var(--darkgrey) 0 -1px 0 inset;
 }
 
 .post-full-content a:hover {
-    color: var(--blue);
+    color: color(black);
     text-decoration: none;
 }
+
+.post-full-content strong,
+.post-full-content em {
+    color: color(var(--darkgrey) l(-5%));
+}
+
+.post-full-content small {
+    display: inline-block;
+    line-height: 1.6em;
+}
+
+.post-full-content li:first-child {
+    margin-top: 0;
+}
+
 
 .post-full-content strong,
 .post-full-content em {
