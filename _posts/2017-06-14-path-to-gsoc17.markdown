@@ -8,6 +8,7 @@ date: 2017-06-14 12:00:00
 tags: gsoc dev security
 class: post-template
 subclass: 'post'
+disqus: True
 author: rnehra01
 ---
 It started almost a year back when I heard about GSoC for the first time in an introductory lecture by SDSLabs. I was quite
@@ -35,4 +36,4 @@ The list of accepted student projects for Google Summer of Code ‘17 came on <i
 I'm looking forward to enjoy my summer with Honeynet. I'll keep writing regular reports on this blog itself.
 
 I would like to thank my mentor <a href="https://github.com/afeena">Evgeniya</a> for helping me throughout the entire process, <a href="https://twitter.com/jay_f0xtr0t">Jay bosamiya</a> for reviewing my proposal and folks at <a href="https://github.com/InfoSecIITR">InfoSecIITR</a> for the entire Infosec journey, especially <a href="https://paraschetal.in">Paras</a> for getting me started.
-<hr>
+

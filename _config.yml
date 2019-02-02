@@ -30,7 +30,7 @@ github: rnehra01
 
 # Disqus
 disqus: False
-disqus_shortname: rnehra01 # replace with your disqus username
+disqus_shortname: "rnehra01-github-io" # replace with your disqus username
 
 # Google Analytics
 google_analytics:  # replace with your GA tracking identifier
