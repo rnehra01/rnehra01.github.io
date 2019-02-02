@@ -329,6 +329,11 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     height: 2rem;
 }
 
+.social-link-linkedin svg path {
+    stroke: #fff;
+    height: 2rem;
+}
+
 .social-link-rss svg {
     height: 1.9rem;
 }
