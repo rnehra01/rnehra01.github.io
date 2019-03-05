@@ -48,10 +48,10 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
 			  <div class="toc-content">
-				{{ content | toc }}
+				{{ content | toc_only }}
 			  </div>			  
-                <div class="kg-card-markdown">
-                    {{ content }}
+                <div class="kg-card-markdown post-content">
+                    {{ content | inject_anchors }}
                 </div>
 		
             </section>
