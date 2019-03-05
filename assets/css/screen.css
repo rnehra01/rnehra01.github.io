@@ -728,6 +728,16 @@ The first (most recent) post in the list is styled to be bigger than the others 
     text-decoration: none;
 }
 
+.post-full-content .toc-content a {
+	color: color(var(--blue) l(-5%));
+    text-decoration: none;
+	box-shadow: none;
+}
+
+.post-full-content .toc-content a:hover {
+    text-decoration: underline;    
+}
+
 .post-full-content strong,
 .post-full-content em {
     color: color(var(--darkgrey) l(-5%));

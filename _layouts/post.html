@@ -47,6 +47,9 @@ into the {body} of the default.hbs template -->
             {% endif %}
 
             <section class="post-full-content">
+			  <div class="toc-content">
+				{{ content | toc }}
+			  </div>			  
                 <div class="kg-card-markdown">
                     {{ content }}
                 </div>
