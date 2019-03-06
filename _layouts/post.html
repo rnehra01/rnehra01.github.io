@@ -47,9 +47,11 @@ into the {body} of the default.hbs template -->
             {% endif %}
 
             <section class="post-full-content">
-			  <div class="toc-content">
+			  {% if page.toc %}
+			  <div class="toc-content">			
 				{{ content | toc_only }}
-			  </div>			  
+			  </div>
+			  {% endif %}
                 <div class="kg-card-markdown post-content">
                     {{ content | inject_anchors }}
                 </div>
