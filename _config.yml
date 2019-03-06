@@ -1,7 +1,6 @@
 # Jekyll configuration
 markdown: kramdown
 highlighter: rouge
-paginate: 100 # it will paginate after this number
 language: 'en-uk'
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
@@ -36,20 +35,37 @@ disqus_shortname: "rnehra01-github-io" # replace with your disqus username
 # Google Analytics
 google_analytics: "UA-102153288-1" # replace with your GA tracking identifier
 
-# Permalinks
-permalink: /:title
-# permalink: /author/:author
-# permalink: /tag/:tag
+#algolia
 
 # Authors' info in `_data/authors.yml`
 # Tags' info in `_data/tags_info.yml`
 
 # gems and other configs
 plugins_dir: [_plugins]
-plugins: [jekyll-paginate, jekyll-feed, jekyll-sitemap, jekyll-toc]
+plugins: [jekyll-paginate-v2, jekyll-feed, jekyll-sitemap, jekyll-toc]
 
 feed:
   path: feed.xml
+
+# Pagination Settings
+permalink: /:title
+
+pagination:
+  enabled: true
+  per_page: 5
+  permalink: '/:title'
+  title: ' - page :num'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+
+autopages:
+  enabled: true
+  tags:
+    layouts: 
+      - 'tag.html'
+    title: 'Posts tagged with :tag' # :tag is replaced by the tag name
+    permalink: '/tag/:tag'
 
 # Additional settings available on the front-matter
 # Site logo in the index.html (as in demo.ghost.io)
