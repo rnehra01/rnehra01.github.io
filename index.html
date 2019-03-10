@@ -31,11 +31,13 @@ into the {body} of the default.hbs template -->
 <!-- The main content area -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
-
         <div class="post-feed">
-            <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
+          <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
+		  <div id="search-hits"></div>
+		  <div id="posts">
             {%  include post-card.html %}
-        </div>
-
+		  </div>
+		</div>
+		{% include algolia.html %}
     </div>
 </main>

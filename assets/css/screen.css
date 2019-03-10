@@ -223,18 +223,6 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 
 */
 
-.site-nav-logo {
-    flex-shrink: 0;
-    display: block;
-    margin-right: 24px;
-    padding: 11px 0;
-    color: #fff;
-    font-size: 1.7rem;
-    line-height: 1em;
-    font-weight: bold;
-    letter-spacing: -0.5px;
-}
-
 .site-nav-logo:hover {
     text-decoration: none;
 }
@@ -277,6 +265,69 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     display: flex;
     align-items: center;
     height: 40px;
+}
+
+.site-nav-logo {
+    flex-shrink: 0;
+    display: block;
+    margin-right: 24px;
+    padding: 11px 0;
+    color: #fff;
+    font-size: 1.7rem;
+    line-height: 1em;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+/*Search*/
+
+.ais-search-box{
+	padding-top: 12px;
+}
+
+.ais-search-box .ais-search-box--input {
+	background: none;
+	height: 30px;
+	width: 0px;
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	-webkit-transition: width .5s;
+	-moz-transition: width .5s;
+	transition: width .5s;
+	padding-left: 0px;
+	margin-right: 10px;
+	border: 0;
+	cursor: pointer;
+	float: right;
+	z-index: 1;
+}
+
+.ais-search-box .open {
+	width: 712px;
+	padding: 15px;
+	color: #ffffff;
+	cursor: auto;
+	border: 1px solid #ffffff;
+}
+.ais-search-box input:-moz-placeholder {
+	color: transparent;
+}
+.ais-search-box input::-webkit-input-placeholder {
+	color: transparent;
+}
+
+.search-icon{
+	display: flex;
+	padding-right: 10px;
+	padding-top: 4px;
+	opacity: 0.8;
+	align-items: center;
+	z-index: 2;
+}
+
+.search-icon:hover{
+	opacity:1;
 }
 
 .social-links {

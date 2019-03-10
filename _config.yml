@@ -36,6 +36,12 @@ disqus_shortname: "rnehra01-github-io" # replace with your disqus username
 google_analytics: "UA-102153288-1" # replace with your GA tracking identifier
 
 #algolia
+algolia:
+  application_id: GVFM3KX3UX
+  index_name: rnehra01.github.io
+  search_only_api_key: 4f0ffe8c2149d573ab7f386921c55713
+  settings:
+    attributesToSnippet: ['*:33']
 
 # Authors' info in `_data/authors.yml`
 # Tags' info in `_data/tags_info.yml`
