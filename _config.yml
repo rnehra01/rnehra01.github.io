@@ -40,6 +40,10 @@ algolia:
   application_id: GVFM3KX3UX
   index_name: rnehra01.github.io
   search_only_api_key: 4f0ffe8c2149d573ab7f386921c55713
+  files_to_exclude: [
+    index.html,
+    about/index.md
+  ]
   settings:
     attributesToSnippet: ['*:33']
     highlightPreTag: '<em class="ais-match-highlight">'
