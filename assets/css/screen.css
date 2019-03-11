@@ -304,7 +304,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 }
 
 .ais-search-box .open {
-	width: 712px;
+	width: 100%;
 	padding: 15px;
 	color: #ffffff;
 	cursor: auto;

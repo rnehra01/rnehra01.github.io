@@ -77,7 +77,10 @@ search.addWidget(
   instantsearch.widgets.hits({
       container: '#search-hits',
 	  templates: {
-		  item: hitTemplate
+		  item: hitTemplate,
+		  empty: function(data){
+			  return '';
+		  }
 	  }
   })
 );
@@ -93,11 +96,9 @@ search.addWidget(
 
   function expand(){
 	  if($('.ais-search-box--input').hasClass('open')){
-		  $('.site-nav-left').css('visibility', 'visible');
 		  $('#search-hits').hide();
 		  $('#posts').show();
 	  }else{
-		  $('.site-nav-left').css('visibility', 'hidden');
 		  $('#search-hits').show();
 		  $('#posts').hide();		  
 	  }
