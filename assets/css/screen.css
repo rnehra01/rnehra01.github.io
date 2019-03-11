@@ -280,6 +280,12 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 }
 
 /*Search*/
+.ais-match-highlight{
+	font-weight: bold;
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+	color: #000000;
+}
 
 .ais-search-box{
 	padding-top: 12px;
