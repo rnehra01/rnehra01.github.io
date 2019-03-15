@@ -496,6 +496,14 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     text-decoration: none;
 }
 
+.post-card-header-excerpt-link {
+    color: var(--darkgrey);
+}
+
+.post-card-header-excerpt-link:hover {
+    text-decoration: none;
+}
+
 .post-card-tags-date {
     margin-bottom: 4px;
     color: var(--midgrey);

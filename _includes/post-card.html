@@ -19,10 +19,11 @@
                             {% endif %}
                         {% endfor %}
                     {% endif %}
-		</header>
+			  </header>
+			  <a class="post-card-header-excerpt-link" href="{{ site.baseurl }}{{ post.url | remove_first: '/' }}">
 	      <header class="post-card-header">
                     <h2 class="post-card-title">{{ post.title }}</h2>
-                </header>
+          </header>
                 <section class="post-card-excerpt">
                     {% if post.excerpt %}
                         <p>{{ post.excerpt | strip_html | truncatewords: 33, "" }}...</p>
@@ -30,6 +31,7 @@
                         <p>{{ post.content | strip_html | truncatewords: 33, "" }}...</p>
                     {% endif %}
                 </section>
+			  </a>
             </div>
             <footer class="post-card-meta">
                 {% for author in site.data.authors %}
