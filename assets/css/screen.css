@@ -550,6 +550,10 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     text-transform: uppercase;
 }
 
+.post-card-author a{
+	color: var(--darkgrey);
+}
+
 .reading-time {
     font-size: 1.2rem;
     font-weight: 500;
@@ -664,7 +668,11 @@ The first (most recent) post in the list is styled to be bigger than the others 
 }
 
 .post-full-meta-date {
-    color: var(--blue);
+    color: var(--midgrey);
+}
+
+.post-full-meta a{
+	color: var(--midgrey);
 }
 
 .post-full-title {
@@ -1618,7 +1626,7 @@ Usage (In Ghost editor):
     width: 100%;
     height: 2px;
     border: none;
-    color: var(--blue);
+    color: var(--darkgrey);
     background: transparent;
 
     appearance: none;
@@ -1629,11 +1637,11 @@ Usage (In Ghost editor):
 }
 
 .progress::-webkit-progress-value {
-    background-color: var(--blue);
+    background-color: var(--darkgrey);
 }
 
 .progress::-moz-progress-bar {
-    background-color: var(--blue);
+    background-color: var(--darkgrey);
 }
 
 .progress-container {
@@ -1650,7 +1658,7 @@ Usage (In Ghost editor):
     display: block;
     width: 50%;
     height: inherit;
-    background-color: var(--blue);
+    background-color: var(--darkgrey);
 }
 
 @media (max-width: 900px) {
