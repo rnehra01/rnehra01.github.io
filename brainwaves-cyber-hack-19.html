@@ -537,40 +537,44 @@ Look at the location of non-Meta file <a href="https://en.wikipedia.org/wiki/NTF
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-    <article class="post-card post-template">
+                    <article class="post-card post-template">
         
             <a class="post-card-image-link" href="/path-to-gsoc17">
                 <div class="post-card-image" style="background-image: url(/assets/images/gsoc-honeynet-17.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/path-to-gsoc17">
-                <header class="post-card-header">
+            <div class="post-card-content-link">
+              <header class="post-card-header">
+		<time class="post-card-tags-date" datetime="14 June 2017">14 June 2017</time>
+                
+		<span class="post-card-tags-date">/</span>
+                        
+                            
+                               <a class="post-card-tags-date" href='/tag/gsoc/'>gsoc,</a>
+                            
+                        
+                            
+                               <a class="post-card-tags-date" href='/tag/dev/'>dev,</a>
+                            
+                        
+                            
+                                <a class="post-card-tags-date" href='/tag/security/'>security</a>
+                            
+                        
                     
-                        
-                            
-                               <span class="post-card-tags">Gsoc</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Dev</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Security</span>
-                            
-                        
-                    
-
+			  </header>
+			  <a class="post-card-header-excerpt-link" href="/path-to-gsoc17">
+	      <header class="post-card-header">
                     <h2 class="post-card-title">$PATH to GSoC'17</h2>
-                </header>
+          </header>
                 <section class="post-card-excerpt">
                     
-                        <p></p>
+                        <p>It started almost a year back when I heard about GSoC for the first time in an introductory lecture by SDSLabs. I was quite a noob except knowing a little about competitive coding....</p>
                     
                 </section>
-            </a>
+			  </a>
+            </div>
             <footer class="post-card-meta">
                 
                     
@@ -582,12 +586,12 @@ Look at the location of non-Meta file <a href="https://en.wikipedia.org/wiki/NTF
                         </span>
                     
                 
-				<span class="reading-time">
+			<span class="reading-time">
                         
                         
                           3 min read
                         
-                </span>
+            </span>
             </footer>
         </div>
     </article>
