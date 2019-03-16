@@ -824,6 +824,12 @@ The first (most recent) post in the list is styled to be bigger than the others 
     text-decoration: underline;    
 }
 
+.post-full-content .anchor {
+	display: block;
+    position: relative;
+    top: -70px;
+}
+
 .post-full-content strong,
 .post-full-content em {
     color: color(var(--darkgrey) l(-5%));
