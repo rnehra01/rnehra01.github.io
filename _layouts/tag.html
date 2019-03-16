@@ -20,11 +20,11 @@ logo:
     <div class="inner">
         {% include site-nav.html %}
         <div class="site-header-content">
-            <h1 class="site-title">{{ page.tag }}</h1>
+            <h1 class="site-title">#{{ page.autopages.display_name }}</h1>
             <h2 class="site-description">
                 {% if tag_description %}
                     {{ tag_description }}
-                {% elsif page.tag %}
+                {% elsif page.autopages.display_name %}
     			    A collection of {{ paginator.total_posts }} posts
                 {% endif %}
             </h2>
