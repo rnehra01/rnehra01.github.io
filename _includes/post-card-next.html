@@ -6,28 +6,33 @@
             </a>
         {% endif %}
         <div class="post-card-content">
-            <a class="post-card-content-link" href="{{ site.baseurl }}{{ page.next.url | remove_first: '/' }}">
-                <header class="post-card-header">
-                    {% if page.next.tags.size > 0 %}
+            <div class="post-card-content-link">
+              <header class="post-card-header">
+		<time class="post-card-tags-date" datetime="{{ page.next.date | date:'%e %B %Y' }}">{{ page.next.date | date:'%e %B %Y' }}</time>
+                {% if page.next.tags.size > 0 %}
+		<span class="post-card-tags-date">/</span>
                         {% for tag in page.next.tags %}
                             {% if forloop.index == page.next.tags.size %}
-                                <span class="post-card-tags">{{ tag | capitalize }}</span>
+                                <a class="post-card-tags-date" href='{{ site.baseurl }}tag/{{ tag | downcase | replace: ' ', '-' }}/'>{{ tag }}</a>
                             {% else %}
-                               <span class="post-card-tags">{{ tag | capitalize }}</span>
+                               <a class="post-card-tags-date" href='{{ site.baseurl }}tag/{{ tag | downcase | replace: ' ', '-' }}/'>{{ tag }},</a>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
-
+			  </header>
+			  <a class="post-card-header-excerpt-link" href="{{ site.baseurl }}{{ page.next.url | remove_first: '/' }}">
+	      <header class="post-card-header">
                     <h2 class="post-card-title">{{ page.next.title }}</h2>
-                </header>
+          </header>
                 <section class="post-card-excerpt">
-                    {% if post.excerpt %}
-                        <p>{{ post.excerpt | strip_html | truncatewords: 33, "" }}</p>
+                    {% if page.next.excerpt %}
+                        <p>{{ page.next.excerpt | strip_html | truncatewords: 33, "" }}...</p>
                     {% else %}
-                        <p>{{ post.content | strip_html | truncatewords: 33, "" }}</p>
+                        <p>{{ page.next.content | strip_html | truncatewords: 33, "" }}...</p>
                     {% endif %}
                 </section>
-            </a>
+			  </a>
+            </div>
             <footer class="post-card-meta">
                 {% for author in site.data.authors %}
                     {% if author[1].username == page.next.author %}
@@ -39,14 +44,14 @@
                         </span>
                     {% endif %}
                 {% endfor %}
-				<span class="reading-time">
+			<span class="reading-time">
                         {% assign words = page.next.content | strip_html | number_of_words %}
                         {% if words <= words_per_minute %}
                           1 min read
                         {% else %}
                           {{ words | divided_by:site.words_per_minute }} min read
                         {% endif %}
-			   </span>
+            </span>
             </footer>
         </div>
     </article>
