@@ -111,18 +111,20 @@
 
 
 </head>
-<body class="page-template">
+<body class="author-template">
 
     <div class="site-wrapper">
         <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
-        <!-- < default -->
-<!-- The tag above means: insert everything in this file
-into the {body} of the default.hbs template -->
+        <!-- < default}} -->
+<!-- The tag above means - insert everything in this file into the {body} of the default.hbs template -->
 
-<!-- The big featured header, it uses blog cover image as a BG if available -->
-<header class="site-header outer">
-    <div class="inner">
-        <nav class="site-nav">
+<!-- #author  -->
+<!-- Everything inside the #author tags pulls data from the author -->
+
+    
+    <header class="site-header outer no-cover">
+        <div class="inner">
+            <nav class="site-nav">
     <div class="site-nav-left">
         
             
@@ -168,22 +170,34 @@ into the {body} of the default.hbs template -->
     </div>
 </nav>
 
-    </div>
-</header>
+            <div class="site-header-content">
+                
+                    <img class="author-profile-image" src="/assets/images/my.jpg" alt="" />
+                
+                <h1 class="site-title">Ravinder Nehra</h1>
+                
+                    <h2 class="author-bio">Undergrad at IITR</h2>
+                
+                <div class="author-meta">
+                    
+                        <div class="author-location">IIT Roorkee, India <span class="bull">&bull;</span></div>
+                    
+                    <div class="author-stats">
+                      
+					  2 posts
+                </div>
+            </div>
+        </div>
+    </header>
+    
 
-<!-- Everything inside the #post tags pulls data from the post -->
-<!-- #post -->
+<!-- /author -->
 
+<!-- The main content area -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full post page no-image">
-
-            <header class="post-full-header">
-                <h1 class="post-full-title">About</h1>
-            </header>
-
-            
+        <article class="post-full post page">
 
             <section class="post-full-content">
                 <p>I am a Computer Science undergrad studying at IIT Roorkee. I am interested in information security. I’ve tried my hands on binary exploitation, cryptography but love web security in particular. I successfully added a few emulators to emulate web vulnerabilities in a web honeypot under <a href="https://github.com/mushorg/tanner/wiki/GSoC-2017-Work-Submission">GSoC’17</a>. I keep myself updated about security through participating in ctfs, HackerOne, Twitter and Hacker News. I’m a member of <a href="https://infoseciitr.github.io/">InfoSecIITR</a>, a group of security enthusiasts at IIT Roorkee. I also design challenges for ctfs hosted on <a href="https://backdoor.sdslabs.co/users/rnehra01">backdoor</a>. I maintain <a href="https://github.com/rnehra01/web-cheats">web-cheats</a> to remember the tricks employed during ctfs. Also I really like to read about operating systems, networks and computer architecture. While learning about ARP Spoofing, I created a <a href="https://github.com/rnehra01/arp-validator">tool</a> to detect ARP Spoofing attacks.</p>
@@ -196,17 +210,6 @@ into the {body} of the default.hbs template -->
 
     </div>
 </main>
-
-<!-- /post -->
-
-<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
-<script>
-$(function() {
-    var $postContent = $(".post-full-content");
-    $postContent.fitVids();
-});
-</script>
-
 
 
         <!-- Previous/next page links - displayed on every page -->
@@ -285,14 +288,6 @@ $(function() {
 
 
     <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
-    
-        <script>
-$(function() {
-    var $postContent = $(".post-full-content");
-    $postContent.fitVids();
-});
-</script>
-
     
 
     <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
