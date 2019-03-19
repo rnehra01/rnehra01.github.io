@@ -1,10 +1,10 @@
 ---
-layout: page
+layout: author
 current: about
 title: About
 navigation: true
 logo: 
-class: page-template
+class: author-template
 subclass: 'post page'
 ---
 

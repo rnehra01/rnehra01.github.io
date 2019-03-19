@@ -91,7 +91,7 @@ body {
 @media (min-width: 900px) {
     .home-template .post-feed,
     .tag-template .post-feed,
-    .author-template .post-feed {
+    .author-template .post-full {
         margin-top: -70px;
         padding-top: 0;
     }
@@ -634,7 +634,8 @@ The first (most recent) post in the list is styled to be bigger than the others 
 /* ---------------------------------------------------------- */
 
 .post-template .site-main,
-.page-template .site-main {
+.page-template .site-main,
+.author-template .site-main{
     padding-bottom: 4vw;
     background: #fff;
 }
@@ -1706,12 +1707,16 @@ Usage (In Ghost editor):
 /* 8. Author Template
 /* ---------------------------------------------------------- */
 
+.author-template .site-header-content{
+	padding-top: 8vw;
+}
+
 .site-header-content .author-profile-image {
     z-index: 10;
     flex-shrink: 0;
     margin: 0 0 20px 0;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     box-shadow: rgba(255,255,255,0.1) 0 0 0 6px;
 }
 

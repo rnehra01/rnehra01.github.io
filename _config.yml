@@ -8,6 +8,7 @@ words_per_minute: 200
 baseurl: /
 
 # Website info
+author: rnehra01
 title: Ravinder Nehra
 description: Security Enthusiast - Developer
 cover: assets/images/blog-cover.png
