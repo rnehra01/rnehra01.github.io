@@ -53,7 +53,7 @@
         {{ content }}
 
         <!-- Previous/next page links - displayed on every page -->
-        {% if paginator.total_posts > site.paginate %}
+        {% if paginator.total_posts > site.pagination.per_page %}
             {% if page.class == 'home-template' %}
                 {% include post_pagination.html %}
             {% elsif page.class == 'page-template' %}

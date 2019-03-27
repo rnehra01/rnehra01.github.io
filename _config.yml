@@ -1,5 +1,7 @@
 # Jekyll configuration
 markdown: kramdown
+kramdown:
+  auto_ids: false
 highlighter: rouge
 language: 'en-uk'
 words_per_minute: 200
@@ -67,7 +69,7 @@ permalink: /:title
 pagination:
   enabled: true
   per_page: 5
-  permalink: '/:title'
+  permalink: '/page:num/'
   title: ' - page :num'
   limit: 0
   sort_field: 'date'
@@ -80,6 +82,10 @@ autopages:
       - 'tag.html'
     title: 'Posts tagged with :tag' # :tag is replaced by the tag name
     permalink: '/tag/:tag'
+  categories:
+    enabled: false
+  collections:
+    enabled: false
 
 # Additional settings available on the front-matter
 # Site logo in the index.html (as in demo.ghost.io)
