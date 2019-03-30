@@ -14,9 +14,9 @@ author: rnehra01
 title: Ravinder Nehra
 description: Security Enthusiast & Developer
 cover: assets/images/blog-cover.png
-#logo: assets/images/logo.jpg
-#logo_dark: assets/images/logo.jpg
-#favicon: assets/images/favicon.png
+# logo: assets/images/favicon.ico
+# logo_dark: assets/images/favicon.ico
+favicon: assets/images/favicon.png
 production_url: 
 source_url:
 CNAME: #add cname for website to be created
