@@ -692,7 +692,7 @@ The first (most recent) post in the list is styled to be bigger than the others 
     background: var(--lightgrey) center center;
     background-size: cover;/**/
     border-radius: 5px;
-    background: color(var(--darkgrey) l(-5%)) no-repeat center center;
+    /* background: color(var(--darkgrey) l(-5%)) no-repeat center center; */
 }
 
 @media (max-width: 100%) {
