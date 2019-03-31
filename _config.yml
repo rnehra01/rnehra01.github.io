@@ -1,7 +1,5 @@
 # Jekyll configuration
 markdown: kramdown
-kramdown:
-  auto_ids: false
 highlighter: rouge
 language: 'en-uk'
 words_per_minute: 200

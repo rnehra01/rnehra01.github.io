@@ -47,6 +47,11 @@ body {
     text-indent: -9999px;
 }
 
+:target::before {
+    content:"";
+    display:block;
+    height:70px;
+}
 
 /* 2. Layout - Page building blocks
 /* ---------------------------------------------------------- */
