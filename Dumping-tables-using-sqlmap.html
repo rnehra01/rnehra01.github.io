@@ -232,11 +232,11 @@ into the {body} of the default.hbs template -->
 			  
                 <div class="kg-card-markdown post-content">
                     <p>This post will try to show a small portion of power that sqlmap possess.</p>
-<h3>
+<h3 id="sequel">
 <a class="anchor" href="#sequel" aria-hidden="true"><span class="octicon octicon-link"></span></a>sequel</h3>
 <p>This is a web challenge from BSides SF CTF 2019. The home page shows a login form. After logging using <code class="highlighter-rouge">guest</code> account, I am presented with a list of movies with their ratings and a private note for each. The private note corresponding to Hackers movie has some reference to admin, so I guess I need to log in as admin. SQLi on the login form doesn’t work. But there is a <code class="highlighter-rouge">1337_AUTH</code> cookie which on base64 decoding gives <code class="highlighter-rouge">{"username":"guest","password":"guest"}</code>. Cool, lets try SQLi here and making <code class="highlighter-rouge">username</code> to <code class="highlighter-rouge">guest" and "1"="1</code> results in successful login while <code class="highlighter-rouge">guest" and "1"="2</code> shows <code class="highlighter-rouge">Invalid user</code>, so it’s a blind injection. Doing some recon using my <a href="https://github.com/rnehra01/web-cheats/blob/master/sqli.md#for-sqlite">web-cheats</a>, I am able to recognise that the backend database is SQLite as the sqlite specific payload <code class="highlighter-rouge">guest" and EXISTS(select sqlite_version) and "1"="1</code> works. So the task is to pull entries related to admin from the database. I have previously written a <a href="https://github.com/InfoSecIITR/write-ups/blob/master/2016/SharifCTF-2016/web-200/web-200.py">script</a> to extract data but I have heard a lot about <a href="http://sqlmap.org/">sqlmap</a> but haven’t used it yet. So lets give it a go and also writing that script took me a long time.</p>
 
-<h3>
+<h3 id="time-to-use-the-big-guns">
 <a class="anchor" href="#time-to-use-the-big-guns" aria-hidden="true"><span class="octicon octicon-link"></span></a>Time to use the big guns</h3>
 <p>Lets start by finding the tables present in the database which comes down to this</p>
 <pre>
@@ -275,11 +275,11 @@ Table: userinfo
 +-----------+-----------+</span></code></pre></figure>
 
 <p><strong>WTF</strong>, the column names look strange.</p>
-<h3>
+<h3 id="bug-in-sqlmap">
 <a class="anchor" href="#bug-in-sqlmap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bug in sqlmap</h3>
 <p>Okay, the table syntax <code class="highlighter-rouge">CREATE TABLE userinfo (    username text not null primary key,    password text not null)</code> looks good, I guess there is <code class="highlighter-rouge">\t</code> character before column name and that’s how sqlmap assume <code class="highlighter-rouge">tusername</code> as column name instead of <code class="highlighter-rouge">username</code>. Cool, I find a bug in sqlmap. Next thing, I report it on <a href="https://github.com/sqlmapproject/sqlmap/issues/3551">Github</a> and they are super quick to push a fix.</p>
 
-<h3>
+<h3 id="continue-hacking">
 <a class="anchor" href="#continue-hacking" aria-hidden="true"><span class="octicon octicon-link"></span></a>Continue hacking</h3>
 <p>So I override the column names for the table using <code class="highlighter-rouge">-C</code> switch and the complete table is here</p>
 
@@ -296,7 +296,7 @@ Table: userinfo
 
 <p>Logging into the account of <code class="highlighter-rouge">sequeladmin</code> gives the flag.</p>
 
-<h3>
+<h3 id="conclusion">
 <a class="anchor" href="#conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion</h3>
 <ol>
   <li>Sqlmap can help in avoiding writing scripts, thus exploiting much faster.</li>

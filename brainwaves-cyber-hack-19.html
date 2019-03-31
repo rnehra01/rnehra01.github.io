@@ -226,7 +226,7 @@ into the {body} of the default.hbs template -->
                 <div class="kg-card-markdown post-content">
                     <p>This is the fifth edition of Brainwaves hackathon. The challenges are based on filesystems i.e. how data is stored in the hard disk. We are provided with 2 dumps of a hard disk.</p>
 
-<h3>
+<h3 id="dump-1">
 <a class="anchor" href="#dump-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dump 1</h3>
 <blockquote>
 <p>The first sector of the hard disk is been modified. To load the boot loader successfully at every boot process we need to fix it. Your task is to fix the first sector and upload it back to us. Corrupted bytes  of the partition entries  are replaced  with value "CC". So you need to fix  these fields only.</p>
@@ -321,7 +321,7 @@ Based on the above information, the 4 partition entries in MBR are (the values h
 000001f0: ffff 0ffe ffff 00b8 f91d 00a0 3e1c 55aa  ............&gt;.U.
 </pre>
 
-<h6>
+<h6 id="questions-based-on-dump-1">
 <a class="anchor" href="#questions-based-on-dump-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questions based on dump 1</h6>
 <blockquote>
 Q1. How many primary partitions are there in the hard disk dump?
@@ -357,7 +357,7 @@ It can be calculated by adding size of the partitions and multiplying by
 bytes_per_sector(0x200).
 </pre>
 
-<h3>
+<h3 id="dump-2">
 <a class="anchor" href="#dump-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dump 2</h3>
 
 <blockquote>
@@ -411,7 +411,7 @@ rnehra@pc ~&gt; file dump2_fixed
 dump2_fixed: DOS/MBR boot sector, code offset 0x52+2, OEM-ID "NTFS    ", sectors/cluster 8, Media descriptor 0xf8, sectors/track 63, heads 255, hidden sectors 718848, dos &lt; 4.0 BootSector (0x80), FAT (1Y bit by descriptor); NTFS, sectors/track 63, sectors 716800, $MFT start cluster 29866, $MFTMirror start cluster 2, bytes/RecordSegment 2^(-1*246), clusters/index block 1, serial number 040ae5d9dae5d8c72
 </pre>
 
-<h6>
+<h6 id="questions-based-on-dump-2">
 <a class="anchor" href="#questions-based-on-dump-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questions based on dump 2</h6>
 <blockquote>
 Q5. What is the size of cluster in bytes?
