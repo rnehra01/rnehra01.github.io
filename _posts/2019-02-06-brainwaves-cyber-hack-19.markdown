@@ -15,7 +15,7 @@ author: rnehra01
 
 This is the fifth edition of Brainwaves hackathon. The challenges are based on filesystems i.e. how data is stored in the hard disk. We are provided with 2 dumps of a hard disk.
 
-<h3>Dump 1</h3>
+### Dump 1
 <blockquote>
 <p>The first sector of the hard disk is been modified. To load the boot loader successfully at every boot process we need to fix it. Your task is to fix the first sector and upload it back to us. Corrupted bytes  of the partition entries  are replaced  with value "CC". So you need to fix  these fields only.</p>
 </blockquote>
@@ -111,7 +111,7 @@ After putting these values in the dump (converted to little-endian in the dump),
 000001f0: ffff 0ffe ffff 00b8 f91d 00a0 3e1c 55aa  ............>.U.
 </pre>
 
-<h6>Questions based on dump 1</h6>
+###### Questions based on dump 1
 <blockquote>
 Q1. How many primary partitions are there in the hard disk dump?
 </blockquote>
@@ -146,7 +146,7 @@ It can be calculated by adding size of the partitions and multiplying by
 bytes_per_sector(0x200).
 </pre>
 
-<h3>Dump 2</h3>
+### Dump 2
 
 <blockquote>
 The first sector of 2<sup>nd</sup> partition is modified to make the partition unusable by the operating system. Your task is to fix the first sector  and upload it back to us. MFT table of the partition is at the offset 0x1d3aa000 bytes from starting in the hard disk.
@@ -199,7 +199,7 @@ rnehra@pc ~> file dump2_fixed
 dump2_fixed: DOS/MBR boot sector, code offset 0x52+2, OEM-ID "NTFS    ", sectors/cluster 8, Media descriptor 0xf8, sectors/track 63, heads 255, hidden sectors 718848, dos < 4.0 BootSector (0x80), FAT (1Y bit by descriptor); NTFS, sectors/track 63, sectors 716800, $MFT start cluster 29866, $MFTMirror start cluster 2, bytes/RecordSegment 2^(-1*246), clusters/index block 1, serial number 040ae5d9dae5d8c72
 </pre>
 
-<h6>Questions based on dump 2</h6>
+###### Questions based on dump 2
 <blockquote>
 Q5. What is the size of cluster in bytes?
 </blockquote>
