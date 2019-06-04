@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>facebook security ctf writeups</title>
+        
+          <description>&lt;p&gt;This is the first facebook ctf. I participated with &lt;a href=&quot;https://infoseciitr.github.io/&quot;&gt;InfoSecIITR&lt;/a&gt; and solved 2 challenges. This post contains the writeups for solved challenges and my ideas about the ones I didn’t solve but could have.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 04 Jun 2019 11:37:00 +0000</pubDate>
+        <link>
+        /FBCTF-Writeups</link>
+        <guid isPermaLink="true">/FBCTF-Writeups</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Dumping tables using sqlmap;--</title>
         
           <description>&lt;p&gt;This post will try to show a small portion of power that sqlmap possess.&lt;/p&gt;
