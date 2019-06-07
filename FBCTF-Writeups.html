@@ -229,12 +229,12 @@ into the {body} of the default.hbs template -->
 
 <h3 id="products-manager---web">
 <a class="anchor" href="#products-manager---web" aria-hidden="true"><span class="octicon octicon-link"></span></a>products manager - web</h3>
-<p>This challenge is written by one of our alumini, <a href="https://twitter.com/dhaval_kapil">@vampire</a>. The source code shows use of PDO which crosses out query based injection. But then I noticed the schema which had a maximum capacity for all the fields and looked at my <a href="https://github.com/rnehra01/web-cheats/blob/master/sqli.md#common-errs">web exploitation notes</a> which gave me the idea of inserting a duplicate <em>facebook</em> product with my secret. So I used <code class="highlighter-rouge">facebook + ' '*56 + hack</code> as name, <code class="highlighter-rouge">not_so_secret</code> as secret and <code class="highlighter-rouge">hacked!!!</code> as description and the product was successfully inserted. And I can now view the product using <code class="highlighter-rouge">facebook</code> and <code class="highlighter-rouge">not_so_secret</code> and got the flag.
+<p>This challenge is written by one of our alumini, <a href="https://twitter.com/dhaval_kapil">@vampire</a>. The source code shows use of PDO which crosses out query based injection. But then I noticed the schema which had a maximum capacity for all the fields and looked at my <a href="https://github.com/rnehra01/web-cheats/blob/master/sqli.md#common-errs">web exploitation notes</a> which gave me the idea of inserting a duplicate <em>facebook</em> product with my secret. So I used <code class="highlighter-rouge">facebook + ' '*56 + hack</code> as name, <code class="highlighter-rouge">not_so_secret</code> as secret and <code class="highlighter-rouge">hacked!!!</code> as description and the product was successfully inserted. And I could now view the product using <code class="highlighter-rouge">facebook</code> and <code class="highlighter-rouge">not_so_secret</code> and got the flag.
 Basically SQL ignored all characters after the length 64 and truncates the whitespaces by default.</p>
 
 <h3 id="homework_assignment_1337---misc">
 <a class="anchor" href="#homework_assignment_1337---misc" aria-hidden="true"><span class="octicon octicon-link"></span></a>homework_assignment_1337 - misc</h3>
-<p>This challenge is based on based on a RPC protocol, thrift.The task is to write a thrift client. So I installed thrift and got a thrift client working using the documentation.</p>
+<p>This challenge is based on based on a RPC protocol, thrift. The task is to write a thrift client. So I installed thrift and got a thrift client working using the documentation.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">ping</span> <span class="kn">import</span> <span class="n">PingBot</span>
 <span class="kn">from</span> <span class="nn">ping.ttypes</span> <span class="kn">import</span> <span class="o">*</span>
@@ -282,7 +282,7 @@ Initially I was trying to find vulns in the thrift protocol itself but no luck. 
 
 <h3 id="osquery_game---misc">
 <a class="anchor" href="#osquery_game---misc" aria-hidden="true"><span class="octicon octicon-link"></span></a>osquery_game - misc</h3>
-<p>I couldn’t solve this challenge during the ctf. We need to complete some quests to get the flag using osquery which is basically SQLite.</p>
+<p>I couldn’t solve this challenge during the ctf. We needed to complete some quests to get the flag using osquery which is basically SQLite.</p>
 <pre>
 osquery&gt; select * from farm_quests;
 from      |message|done
@@ -330,7 +330,7 @@ So I wrote a SQL query for that</p>
 
 <p>This did the job but used 4 farming days and we had to complete all the quests in 5 days. Also I needed to coordinates of emojis while performing a certain task so I needed to access the farm twice to complete every quest which would be 10 days.</p>
 
-<p>Now since the plowing area was a long vertical column so seed planting could be done by brute-forcing the coordinates as only horizontal coordinate needed to be guessed, the other could be set from 1 to E which reduced one access to farm in this quest.</p>
+<p>Now since the plowing area was a long vertical column so seed planting could be done by brute-forcing the coordinates as only horizontal coordinate needed to be guessed, the other could be set from 1 to E which reduced one access to farm in this quest. Bit still it wouldn’t help to solve the challenge.</p>
 
 <p>After sometime I got an idea of copying the initial farm table to a temporary one and use that to get coordinates of emojis and this worked. As I could do all tasks in 1 farm access plus 1 access of copying so it resulted in 6 days, I needed to cut by 1 days.</p>
 
@@ -351,12 +351,12 @@ So I wrote a SQL query for that</p>
 
 <p>I guess the <code class="highlighter-rouge">farm</code> used in <code class="highlighter-rouge">src</code> was returning a column not a single value.</p>
 
-<p>Later after looking at a writeup I noticed that I missed a simple trick, I could complete seed-planting quest by bruteforcing and also copy te table side by side.</p>
+<p>Later after looking at a writeup I noticed that I missed a simple trick, I could complete seed-planting quest by bruteforcing and also copy the table side by side.</p>
 
 <figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">table</span> <span class="n">tmp</span><span class="p">(</span><span class="n">farm</span> <span class="n">TEXT</span><span class="p">,</span> <span class="n">action</span> <span class="n">TEXT</span><span class="p">,</span> <span class="n">src</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">dst</span> <span class="n">INTEGER</span><span class="p">);</span>
 <span class="k">insert</span> <span class="k">into</span> <span class="n">tmp</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">farm</span> <span class="k">where</span> <span class="n">action</span><span class="o">=</span><span class="s1">'plant'</span> <span class="k">and</span> <span class="n">dst</span><span class="o">=</span><span class="mi">0</span><span class="n">x22</span><span class="p">;</span></code></pre></figure>
 
-<p>Now I had 4 remaining days and 4 quests and temporary table to get coordinates so I could have done the task.</p>
+<p>Now I had 4 remaining days, 4 quests and a temporary table to get coordinates so it could have been done.</p>
 
                 </div>
 		
